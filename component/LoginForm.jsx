@@ -17,9 +17,11 @@ const LoginForm = () => {
         console.log(formdata);
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        const response = axios.post("localhost::5000//api/user/postregrister", formdata);
+        const response = await axios.post("http://localhost:5000/api/user/userpost", formdata);
+
+
         console.log(response.data);
         setFormData({
             name: "",
@@ -35,7 +37,7 @@ const LoginForm = () => {
 
                 <input type="email" placeholder='email' name="email" value={formdata.email} onChange={handelChange} />
                 <input type="password" placeholder='password' name="password" value={formdata.password} onChange={handelChange} />
-                <input type="button" name='submit' value="submit" />
+                <input type="submit" />
             </form>
         </div>
     )
